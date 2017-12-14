@@ -9,7 +9,7 @@ class Screen(AbstractScreen):
 		super(Screen, self).__init__(width, height)
 		import neopixel
 		
-		self.strip = neopixel.Adafruit_NeoPixel(width * height, led_pin, led_freq_hz, led_dma, led_invert, led_brightness)
+		self.strip = neopixel.Adafruit_NeoPixel(width * height, led_pin, led_freq_hz, led_dma, led_invert, led_brightness, strip_type=528384)
 		self.strip.begin()
 		self.update_brightness()
 		
@@ -20,8 +20,8 @@ class Screen(AbstractScreen):
 		for y in range(self.height):
 			for x in range(self.width):
 				if y % 2 == 0:
-					self.strip.setPixelColor(y * self.width + x, self.pixel[x][y])
-				else: self.strip.setPixelColor(y * self.width + self.width - 1 - x, self.pixel[x][y])
+					self.strip.setPixelColor(y * self.width + self.width - 1 - x, self.pixel[x][y])
+				else: self.strip.setPixelColor(y * self.width + x, self.pixel[x][y])
 		self.strip.show()
 
 	def update_brightness(self):
