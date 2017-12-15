@@ -9,7 +9,7 @@ pin_back = 27
 GPIO.setmode(GPIO.BCM)
 
 for pin in [pin_left, pin_right, pin_enter, pin_back]:
-	GPIO.setup(pin, GPIO.IN)
+	GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 def switch(key):
 	if key_state[key]:
